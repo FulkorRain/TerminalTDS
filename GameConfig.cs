@@ -15,7 +15,7 @@ namespace TerminalTDS
                 Name = "Flame-Arrow Archer",
                 Attack = 5,
                 Speed = 135,
-                level = 1,
+                Level = 1,
                 Abilities = new List<TowerAbility>
                 {
                     TowerAbility.None
@@ -27,7 +27,7 @@ namespace TerminalTDS
                 Name = "Frost Mage",
                 Attack = 3,
                 Speed = 98,
-                level = 1,
+                Level = 1,
                 Abilities = new List<TowerAbility>
                 {
                     TowerAbility.None
@@ -44,7 +44,7 @@ namespace TerminalTDS
                 Defense = 0,
                 Attack = 3,
                 Speed = 121,
-                level = 1,
+                Level = 1,
                 Abilities = new List<EnemyAbility>
                 {
                     EnemyAbility.None
@@ -58,7 +58,7 @@ namespace TerminalTDS
                 Defense = 1,
                 Attack = 10,
                 Speed = 50,
-                level = 1,
+                Level = 1,
                 Abilities = new List<EnemyAbility>
                 {
                     EnemyAbility.None
@@ -72,7 +72,7 @@ namespace TerminalTDS
         public required string Name { get; set; }
         public int Attack { get; set; }
         public int Speed { get; set; }
-        public int level { get; set; }
+        public int Level { get; set; }
 
         public required List<TowerAbility> Abilities { get; set; }
 
@@ -91,7 +91,7 @@ namespace TerminalTDS
         public int Defense { get; set; }
         public int Attack { get; set; }
         public int Speed { get; set; }
-        public int level { get; set; }
+        public int Level { get; set; }
 
         public required List<EnemyAbility> Abilities { get; set; }
 
