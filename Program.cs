@@ -14,11 +14,11 @@ namespace TerminalTDS
             // Engine.cs Handles the main loop
             // GameLogic.cs Handles caluclations, damage, healing, buying and selling towers, enemies dying, attacks etc.
             // GameState.cs Handles the CURRENT state of this turn , has all information needed for this turn, useful later too for online sync / integration
-            // GameConfig Handles most of the constant values, like tower types, names, hp, atk etcc
+            // GameConfig.cs Handles most of the constant values, like tower types, names, hp, atk etcc
 
 
             Console.WriteLine("All decisions would be either decided by you inputting numbers or letters which would be enclosed by (). NOT case sensitive");
-            string choice = Ask("Start Game ? (Y) / (N) ", "y", "n");
+            string choice = InputHelper.Ask("Start Game ? (Y) / (N) ", "y", "n");
             if (choice == "y")
             {
                 Engine engine = new Engine();
@@ -26,22 +26,6 @@ namespace TerminalTDS
             }
             else if (choice == "n") Console.WriteLine("Closing Game. . .");
             
-        }
-
-        static string Ask(string prompt, params string[] choices)
-        {
-            Console.WriteLine(prompt);
-            while (true)
-            {
-               string input = (Console.ReadLine() ?? "").ToLower().Trim();
-                if (choices.Contains(input))
-                {
-                    return input;
-                }
-
-                Console.WriteLine("Invalid Choice.");
-            }
-
         }
     }
 }

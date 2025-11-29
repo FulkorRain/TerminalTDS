@@ -11,6 +11,7 @@ namespace TerminalTDS
 
         public bool GameOn = true;
         public bool PlayerAlive = true;
+        public int TurnCount = 0;
 
     }
 }
