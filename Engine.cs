@@ -21,8 +21,17 @@ namespace TerminalTDS
 
         public void Run()
         {
+            if (state.TurnCount == 0)
+            {
+                Console.WriteLine("TerminalTDS 1.0");
+                choice = InputHelper.Ask("Choose your starter tower: (A) Archer. (B) Mage. ", "a", "b");
+                if (choice == "a") state.AddTower("archer"); else state.AddTower("mage");
+                state.AddEnemy("Goblin");
+            }
+
             while (state.GameOn)
             {
+                state.AddEnemy("goblin");
                 ShowMenu();
             }
         }
@@ -63,7 +72,18 @@ namespace TerminalTDS
 
         private void ScoutEnemyMenu()
         {
-
+            for (int i = 0; i < 9; i++)
+            {
+                if (state.EnemySlots[i] != null)
+                {
+                    Console.WriteLine(state.EnemySlots[i].Name + $"[{i}]");
+                }
+                else
+                {
+                    Console.WriteLine($"[{i}]" + " This slot is empty");
+                }
+                
+            }
         }
     }
 }

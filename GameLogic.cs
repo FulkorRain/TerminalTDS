@@ -15,7 +15,10 @@ namespace TerminalTDS
             this.state = state;
         }
 
+        public void DealDMG(double DMGAmount)
+        {
 
+        }
 
     }
 }

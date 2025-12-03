@@ -16,17 +16,22 @@ namespace TerminalTDS
         public List<Tower> Towers = new();
         public List<Enemy> Enemies = new();
 
+        public Tower[] TowerSlots = new Tower[5];
+        public Enemy[] EnemySlots = new Enemy[9];
+
         public void AddTower(string type)
         {
             if (GameConfig.Tower.TryGetValue(type.ToLower(), out var config))
             {
-                Towers.Add(new Tower(config));
-                Logger.Log("", "", "", "");
+                var tower = new Tower(config);
+                Towers.Add(tower);
+                AddTowerToBoard(tower);
+                Logger.Log("AddTower", "GameState", "GameState", "A player has added a tower.");
 
             }
             else
             {
-                Logger.Log("", "", "", "");
+                Logger.Log("AddTower", "GameState", "GameState", "Tower Add failed.");
             }
         }
 
@@ -34,9 +39,39 @@ namespace TerminalTDS
         {
             if (GameConfig.Enemy.TryGetValue(type.ToLower(), out var config))
             {
-                Enemies.Add(new Enemy(config));
-                Logger.Log("Spawn Enemy", "Engine", type, "Enemy spawned.");
+                var enemy = new Enemy(config);
+                Enemies.Add(enemy);
+                AddEnemyToBoard(enemy);
+                Logger.Log("Spawn Enemy", "GameState", "GameState", "Enemy spawned.");
             }
+        }
+
+        public void AddTowerToBoard(Tower tower)
+        {
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (TowerSlots[i] == null)
+                {
+                    TowerSlots[i] = tower;
+                    return;
+                }
+            }
+
+        }
+
+        public void AddEnemyToBoard(Enemy enemy)
+        {
+
+            for (int i = 0; i < 9; i++)
+            {
+                if (EnemySlots[i] == null)
+                {
+                    EnemySlots[i] = enemy;
+                    return;
+                }
+            }
+
         }
 
     }
