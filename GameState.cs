@@ -11,13 +11,16 @@ namespace TerminalTDS
 
         public bool GameOn = true;
         public bool PlayerAlive = true;
+        public int PlayerHP = 1000;
         public int TurnCount = 0;
+        public const int EnemyMax = 9;
+        public const int TowerMax = 5;
 
         public List<Tower> Towers = new();
         public List<Enemy> Enemies = new();
 
-        public Tower[] TowerSlots = new Tower[5];
-        public Enemy[] EnemySlots = new Enemy[9];
+        public Tower[] TowerSlots = new Tower[TowerMax];
+        public Enemy[] EnemySlots = new Enemy[EnemyMax];
 
         public void AddTower(string type)
         {
@@ -49,10 +52,10 @@ namespace TerminalTDS
         public void AddTowerToBoard(Tower tower)
         {
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < TowerMax; i++)
             {
                 if (TowerSlots[i] == null)
-                {
+                {   
                     TowerSlots[i] = tower;
                     return;
                 }
@@ -63,7 +66,7 @@ namespace TerminalTDS
         public void AddEnemyToBoard(Enemy enemy)
         {
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < EnemyMax; i++)
             {
                 if (EnemySlots[i] == null)
                 {

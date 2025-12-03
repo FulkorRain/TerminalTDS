@@ -72,7 +72,7 @@ namespace TerminalTDS
 
         private void ScoutEnemyMenu()
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < GameState.EnemyMax; i++)
             {
                 if (state.EnemySlots[i] != null)
                 {
