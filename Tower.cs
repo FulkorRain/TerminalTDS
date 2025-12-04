@@ -14,7 +14,8 @@ namespace TerminalTDS
         public int Speed { get; set; }
         public int Level { get; set; }
         public List<TowerAbility> Abilities { get; set; }
-
+        public int ActionValue { get; set; }
+        public double LeftOverTurn { get; set; }
         public Tower(TowerConfig config)
         {
             Name = config.Name;

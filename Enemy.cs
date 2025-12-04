@@ -15,6 +15,8 @@ namespace TerminalTDS
         public int Speed { get; set; }
         public int Level { get; set; }
         public List<EnemyAbility> Abilities { get; set; }
+        public int ActionValue { get; set; }
+        public double LeftOverTurn { get; set; }
 
         public Enemy(EnemyConfig config)
         {

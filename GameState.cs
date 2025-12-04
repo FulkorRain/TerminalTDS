@@ -21,6 +21,7 @@ namespace TerminalTDS
 
         public Tower[] TowerSlots = new Tower[TowerMax];
         public Enemy[] EnemySlots = new Enemy[EnemyMax];
+        public List<int> TurnOrder = new();
 
         public void AddTower(string type)
         {
@@ -55,7 +56,7 @@ namespace TerminalTDS
             for (int i = 0; i < TowerMax; i++)
             {
                 if (TowerSlots[i] == null)
-                {   
+                {
                     TowerSlots[i] = tower;
                     return;
                 }
@@ -75,6 +76,25 @@ namespace TerminalTDS
                 }
             }
 
+        }
+
+        public IEnumerable<dynamic> GetAllUnits()
+        {
+            foreach (var t in TowerSlots)
+            {
+                if (t != null)
+                {
+                    yield return t;
+                }
+            }
+
+            foreach (var e in EnemySlots)
+            {
+                if (e != null)
+                {
+                    yield return e;
+                }
+            }
         }
 
     }

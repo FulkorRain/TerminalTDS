@@ -20,5 +20,24 @@ namespace TerminalTDS
 
         }
 
+        public void InitActionValue()
+        {
+            var units = state.GetAllUnits().ToList();
+
+            if (units.Count == 0)
+            {
+                return;
+            }
+
+            foreach(var unit in units)
+            {
+                double SPDFormula = (double)unit.Speed / 100;
+                int ActionValue = (int)Math.Floor(SPDFormula);
+                double LeftOverTurn = SPDFormula - ActionValue;
+
+                unit.ActionValue = ActionValue;
+                unit.LeftOverTurn = LeftOverTurn;
+            }
+        }
     }
 }
