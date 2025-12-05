@@ -15,7 +15,7 @@ namespace TerminalTDS
         public Engine()
         {
             state = new GameState();
-            logic = new GameLogic(state);
+            logic = new GameLogic(state, this);
             Logger.LoggerSetState(state);
         }
 
@@ -31,6 +31,7 @@ namespace TerminalTDS
 
             while (state.GameOn)
             {
+                state.TurnCount += 1;
                 CycleMenu();
                 logic.InitCycle();
             }
@@ -87,12 +88,12 @@ namespace TerminalTDS
 
         public void AttackMenu()
         {
-
+            Console.WriteLine("You did an attack!");
         }
 
         public void TowerMenu()
         {
-
+            Console.WriteLine("You did a Tower Menu!");
         }
 
         public void ScoutEnemyMenu()
