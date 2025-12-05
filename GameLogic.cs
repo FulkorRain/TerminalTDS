@@ -37,11 +37,16 @@ namespace TerminalTDS
 
                 unit.ActionValue = ActionValue;
                 unit.LeftOverTurn += LeftOverTurn;
+                Logger.Log("ActionValue Calculated", "GameLogic-InitActionValue", unit.name, $"ActionValue: {ActionValue} -> {unit.ActionValue}");
+                Logger.Log("LeftOverTurn Calculated", "GameLogic-InitActionValue", unit.name, $"LeftOverTurn: {LeftOverTurn} -> {unit.LeftOverTurn}");
+
                 if (unit.LeftOverTurn >= 1)
                 {
                     int BonusTurns = (int)Math.Floor(unit.LeftOverTurn);
                     unit.LeftOverTurn -= BonusTurns;
                     unit.ActionValue += BonusTurns;
+                    Logger.Log("ActionValue Calculated (Leftover)", "GameLogic-InitActionValue", unit.name, $"ActionValue: {unit.ActionValue - BonusTurns} -> {unit.ActionValue}");
+                    Logger.Log("LeftOverTurn Calculated (Leftover)", "GameLogic-InitActionValue", unit.name, $"LeftOverTurn: {unit.LeftOverTurn + BonusTurns} -> {unit.LeftOverTurn}");
                 }
             }
         }
