@@ -10,9 +10,11 @@ namespace TerminalTDS
     {
 
         private GameState state;
-        public GameLogic(GameState state)
+        private Engine engine;
+        public GameLogic(GameState state, Engine engine)
         {
             this.state = state;
+            this.engine = engine;
         }
 
         public void DealDMG(double DMGAmount)
@@ -99,12 +101,13 @@ namespace TerminalTDS
 
         public void ExecuteTurnTower(Tower tower)
         {
-            Engine.AttackMenu();
+            engine.AttackMenu();
         }
 
         public void ExecuteEnemyTower(Enemy enemy)
         {
-
+            Console.WriteLine($"{enemy.Name} has restored 5 HP!");
+            enemy.Health += 5;
         }
 
     }
