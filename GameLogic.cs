@@ -29,7 +29,7 @@ namespace TerminalTDS
                 return;
             }
 
-            foreach(var unit in units)
+            foreach (var unit in units)
             {
                 double SPDFormula = (double)unit.Speed / 100;
                 int ActionValue = (int)Math.Floor(SPDFormula);
@@ -50,5 +50,62 @@ namespace TerminalTDS
                 }
             }
         }
+
+        public void InitCycle()
+        {
+            var units = state.GetAllUnits().ToList();
+
+            if (units.Count == 0)
+            {
+                return;
+            }
+
+            InitActionValue();
+
+            List<dynamic> queue = new List<dynamic>();
+
+            foreach (var unit in units)
+            {
+                for (int i = 0; i < unit.ActionValue; i++)
+                {
+                    queue.Add(unit);
+                }
+            }
+
+            ExecuteQueue(queue);
+        }
+
+        public void ExecuteQueue(List<dynamic> queue)
+        {
+            foreach (var unit in queue)
+            {
+                ExecuteTurns(unit);
+            }
+        }
+
+        public void ExecuteTurns(dynamic unit)
+        {
+
+            if (unit is Tower t)
+            {
+                ExecuteTurnTower(t);
+            }
+            else if (unit is Enemy e)
+            {
+                ExecuteEnemyTower(e);
+            }
+
+        }
+
+        public void ExecuteTurnTower(Tower tower)
+        {
+
+        }
+
+        public void ExecuteEnemyTower(Enemy enemy)
+        {
+
+        }
+
     }
 }
