@@ -30,12 +30,12 @@ namespace TerminalTDS
                 var tower = new Tower(config);
                 Towers.Add(tower);
                 AddTowerToBoard(tower);
-                Logger.Log("AddTower", "GameState", "GameState", "A player has added a tower.");
+                Logger.Log("AddTower", "GameState", "TowerSlots", $"A Player has added {tower.Name} to TowerSlots");
 
             }
             else
             {
-                Logger.Log("AddTower", "GameState", "GameState", "Tower Add failed.");
+                Logger.Log("AddTower", "GameState", "General", $"Tower Add failed.");
             }
         }
 
@@ -46,7 +46,6 @@ namespace TerminalTDS
                 var enemy = new Enemy(config);
                 Enemies.Add(enemy);
                 AddEnemyToBoard(enemy);
-                Logger.Log("Spawn Enemy", "GameState", "GameState", "Enemy spawned.");
             }
         }
 
@@ -72,6 +71,7 @@ namespace TerminalTDS
                 if (EnemySlots[i] == null)
                 {
                     EnemySlots[i] = enemy;
+                    Logger.Log("AddEnemyToBoard", "AddEnemy", "EnemySlots", $"Enemy {enemy.Name} spawned.");
                     return;
                 }
             }
