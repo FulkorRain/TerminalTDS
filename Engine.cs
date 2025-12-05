@@ -26,25 +26,33 @@ namespace TerminalTDS
                 Console.WriteLine("TerminalTDS 1.0");
                 choice = InputHelper.Ask("Choose your starter tower: (A) Archer. (B) Mage. ", "a", "b");
                 if (choice == "a") state.AddTower("archer"); else state.AddTower("mage");
-                state.AddEnemy("Goblin");
+                state.AddEnemy("goblin");
             }
 
             while (state.GameOn)
             {
-                state.AddEnemy("goblin");
-                ShowMenu();
+                CycleMenu();
+                logic.InitCycle();
             }
         }
 
-        private void ShowMenu()
+        private void CycleMenu()
         {
-            choice = InputHelper.Ask("(A) Attack Menu. (B) Tower Menu. (C) Scout Enemy.", "a", "b", "c");
-            ProcessMenu(choice);
-            Logger.Log("Choose Menu", "ShowMenu", "ProcessMenu", $"Player opened Main Menu and picked {choice}");
+            choice = InputHelper.Ask("(A) Tower Menu. (B) Scout Enemy. (C) Continue.", "a", "b", "c");
+            ProcessCycleMenu(choice);
+            Logger.Log("Choose Menu", "CycleMenu", "ProcessMenu", $"Player opened CyclemMenu and picked {choice}");
 
         }
 
-        private void ProcessMenu(string input)
+        private void MainMenu()
+        {
+            choice = InputHelper.Ask("(A) Attack Menu. (B) Scout Enemy.", "a", "b");
+            ProcessMainMenu(choice);
+            Logger.Log("Choose Menu", "MainMenu", "ProcessMenu", $"Player opened MainMenu and picked {choice}");
+
+        }
+
+        private void ProcessMainMenu(string input)
         {
             switch (input)
             {
@@ -52,11 +60,28 @@ namespace TerminalTDS
                     AttackMenu();
                     break;
                 case "b":
-                    TowerMenu();
-                    break;
-                case "c":
                     ScoutEnemyMenu();
                     break;
+                default:
+                    return;
+            }
+        }
+
+        private void ProcessCycleMenu(string input)
+        {
+            switch (input)
+            {
+                case "a":
+                    TowerMenu();
+                    break;
+                case "b":
+                    ScoutEnemyMenu();
+                    break;
+                case "c":
+                    Console.WriteLine("Skipped turn.");
+                    break;
+                default:
+                    return;
             }
         }
 
@@ -82,7 +107,7 @@ namespace TerminalTDS
                 {
                     Console.WriteLine($"[{i}]" + " This slot is empty");
                 }
-                
+
             }
         }
     }
