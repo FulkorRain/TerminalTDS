@@ -36,7 +36,13 @@ namespace TerminalTDS
                 double LeftOverTurn = SPDFormula - ActionValue;
 
                 unit.ActionValue = ActionValue;
-                unit.LeftOverTurn = LeftOverTurn;
+                unit.LeftOverTurn += LeftOverTurn;
+                if (unit.LeftOverTurn >= 1)
+                {
+                    int BonusTurns = (int)Math.Floor(unit.LeftOverTurn);
+                    unit.LeftOverTurn -= BonusTurns;
+                    unit.ActionValue += BonusTurns;
+                }
             }
         }
     }
