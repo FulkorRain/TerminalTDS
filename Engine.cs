@@ -36,7 +36,7 @@ namespace TerminalTDS
             }
         }
 
-        private void CycleMenu()
+        public void CycleMenu()
         {
             choice = InputHelper.Ask("(A) Tower Menu. (B) Scout Enemy. (C) Continue.", "a", "b", "c");
             ProcessCycleMenu(choice);
@@ -44,7 +44,7 @@ namespace TerminalTDS
 
         }
 
-        private void MainMenu()
+        public void MainMenu()
         {
             choice = InputHelper.Ask("(A) Attack Menu. (B) Scout Enemy.", "a", "b");
             ProcessMainMenu(choice);
@@ -52,7 +52,7 @@ namespace TerminalTDS
 
         }
 
-        private void ProcessMainMenu(string input)
+        public void ProcessMainMenu(string input)
         {
             switch (input)
             {
@@ -67,7 +67,7 @@ namespace TerminalTDS
             }
         }
 
-        private void ProcessCycleMenu(string input)
+        public void ProcessCycleMenu(string input)
         {
             switch (input)
             {
@@ -85,17 +85,17 @@ namespace TerminalTDS
             }
         }
 
-        private void AttackMenu()
+        public void AttackMenu()
         {
 
         }
 
-        private void TowerMenu()
+        public void TowerMenu()
         {
 
         }
 
-        private void ScoutEnemyMenu()
+        public void ScoutEnemyMenu()
         {
             for (int i = 0; i < GameState.EnemyMax; i++)
             {

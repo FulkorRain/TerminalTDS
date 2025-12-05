@@ -99,7 +99,7 @@ namespace TerminalTDS
 
         public void ExecuteTurnTower(Tower tower)
         {
-
+            Engine.AttackMenu();
         }
 
         public void ExecuteEnemyTower(Enemy enemy)
