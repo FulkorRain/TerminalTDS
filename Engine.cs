@@ -39,7 +39,7 @@ namespace TerminalTDS
 
         public void CycleMenu()
         {
-            choice = InputHelper.Ask("(A) Tower Menu. (B) Scout Enemy. (C) Continue.", "a", "b", "c");
+            choice = InputHelper.Ask("(A) Tower Menu. (D) Scout Enemy. (C) Continue.", "a", "d", "c");
             ProcessCycleMenu(choice);
             Logger.Log("Choose Menu", "CycleMenu", "ProcessMenu", $"Player opened CyclemMenu and picked {choice}");
 
@@ -47,7 +47,7 @@ namespace TerminalTDS
 
         public void MainMenu()
         {
-            choice = InputHelper.Ask("(A) Attack Menu. (B) Scout Enemy.", "a", "b");
+            choice = InputHelper.Ask("(A) Basic Attack. (B) Skill. (C) Ultimate. (D) Scout Enemy.", "a", "b", "c", "d");
             ProcessMainMenu(choice);
             Logger.Log("Choose Menu", "MainMenu", "ProcessMenu", $"Player opened MainMenu and picked {choice}");
 
@@ -58,9 +58,15 @@ namespace TerminalTDS
             switch (input)
             {
                 case "a":
-                    AttackMenu();
+                    BasicAttack();
                     break;
                 case "b":
+                    Skill();
+                    break;
+                case "c":
+                    Ultimate();
+                    break;
+                case "d":
                     ScoutEnemyMenu();
                     break;
                 default:
@@ -75,7 +81,7 @@ namespace TerminalTDS
                 case "a":
                     TowerMenu();
                     break;
-                case "b":
+                case "d":
                     ScoutEnemyMenu();
                     break;
                 case "c":
@@ -86,9 +92,21 @@ namespace TerminalTDS
             }
         }
 
-        public void AttackMenu()
+        public void BasicAttack()
         {
-            Console.WriteLine("You did an attack!");
+            Console.WriteLine("Choose an enemy to attack: ");
+            DisplayEnemyState();
+            choice = InputHelper.PickEnemy(GetAliveEnemies());
+        }
+
+        public void Skill()
+        {
+
+        }
+
+        public void Ultimate()
+        {
+
         }
 
         public void TowerMenu()
@@ -96,13 +114,13 @@ namespace TerminalTDS
             Console.WriteLine("You did a Tower Menu!");
         }
 
-        public void ScoutEnemyMenu()
+        public void DisplayEnemyState()
         {
             for (int i = 0; i < GameState.EnemyMax; i++)
             {
                 if (state.EnemySlots[i] != null)
                 {
-                    Console.WriteLine(state.EnemySlots[i].Name + $"[{i}]");
+                    Console.WriteLine($"[{i}] " + state.EnemySlots[i].Name + $" {state.EnemySlots[i].Health} HP");
                 }
                 else
                 {
@@ -110,6 +128,25 @@ namespace TerminalTDS
                 }
 
             }
+        }
+
+        public void ScoutEnemyMenu()
+        {
+            DisplayEnemyState();
+        }
+
+        public string[] GetAliveEnemies()
+        {
+            var validChoices = new List<string>();
+            for (int i = 0; i < GameState.EnemyMax; i++)
+            {
+                if (state.EnemySlots[i] != null)
+                {
+                    validChoices.Add(i.ToString());
+                }
+            }
+
+            return validChoices.ToArray();
         }
     }
 }

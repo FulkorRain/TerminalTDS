@@ -24,5 +24,19 @@ namespace TerminalTDS
             }
 
         }
+
+        public static string PickEnemy(params string[] choices)
+        {
+            while (true)
+            {
+                string input = (Console.ReadLine() ?? "").ToLower().Trim();
+                if (choices.Contains(input))
+                {
+                    return input;
+                }
+
+                Console.WriteLine("Invalid Choice.");
+            }
+        }
     }
 }

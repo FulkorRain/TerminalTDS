@@ -9,6 +9,7 @@ namespace TerminalTDS
 {
     internal class Tower
     {
+        public string ID { get; set; }
         public string Name { get; set; }
         public int Attack { get; set; }
         public int Speed { get; set; }
@@ -18,6 +19,7 @@ namespace TerminalTDS
         public double LeftOverTurn { get; set; }
         public Tower(TowerConfig config)
         {
+            ID = config.ID;
             Name = config.Name;
             Attack = config.Attack;
             Speed = config.Speed;

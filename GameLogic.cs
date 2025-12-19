@@ -90,21 +90,21 @@ namespace TerminalTDS
 
             if (unit is Tower t)
             {
-                ExecuteTurnTower(t);
+                ExecuteTowerTurn(t);
             }
             else if (unit is Enemy e)
             {
-                ExecuteEnemyTower(e);
+                ExecuteEnemyTurn(e);
             }
 
         }
 
-        public void ExecuteTurnTower(Tower tower)
+        public void ExecuteTowerTurn(Tower tower)
         {
-            engine.AttackMenu();
+            
         }
 
-        public void ExecuteEnemyTower(Enemy enemy)
+        public void ExecuteEnemyTurn(Enemy enemy)
         {
             Console.WriteLine($"{enemy.Name} has restored 5 HP!");
             enemy.Health += 5;

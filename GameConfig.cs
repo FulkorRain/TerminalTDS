@@ -12,6 +12,7 @@ namespace TerminalTDS
         {
             ["archer"] = new TowerConfig
             {
+                ID = "archer",
                 Name = "Flame-Arrow Archer",
                 Attack = 5,
                 Speed = 135,
@@ -24,6 +25,7 @@ namespace TerminalTDS
 
             ["mage"] = new TowerConfig
             {
+                ID = "mage",
                 Name = "Frost Mage",
                 Attack = 3,
                 Speed = 98,
@@ -39,6 +41,7 @@ namespace TerminalTDS
         {
             ["goblin"] = new EnemyConfig
             {
+                ID = "goblin",
                 Name = "Goblin",
                 Health = 4,
                 Defense = 0,
@@ -53,6 +56,7 @@ namespace TerminalTDS
 
             ["orc"] = new EnemyConfig
             {
+                ID = "orc",
                 Name = "Orc",
                 Health = 13,
                 Defense = 1,
@@ -69,6 +73,7 @@ namespace TerminalTDS
 
     internal class TowerConfig
     {
+        public required string ID { get; set; }
         public required string Name { get; set; }
         public int Attack { get; set; }
         public int Speed { get; set; }
@@ -85,7 +90,7 @@ namespace TerminalTDS
 
     internal class EnemyConfig
     {
-
+        public required string ID { get; set; }
         public required string Name { get; set; }
         public int Health { get; set; }
         public int Defense { get; set; }

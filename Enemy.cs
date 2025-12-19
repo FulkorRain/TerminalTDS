@@ -8,6 +8,7 @@ namespace TerminalTDS
 {
     internal class Enemy
     {
+        public string ID { get; set; }
         public string Name { get; set; }
         public int Health { get; set; }
         public int Defense { get; set; }
@@ -20,6 +21,7 @@ namespace TerminalTDS
 
         public Enemy(EnemyConfig config)
         {
+            ID = config.ID;
             Name = config.Name;
             Health = config.Health;
             Defense = config.Defense;
